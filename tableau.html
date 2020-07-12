@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<style> .valeur
+            {
+                background-color: lightblue;
+                width:35px;
+                height:20px;
+                text-align: center;
+            }
+          
+          #masquesaisie 
+            { 	text-align: center;
+  				border: 1px black solid;
+               	width:100px; 
+             	height:15px;
+             	
+            } 
+          
+</style>
+<title>Insert title here</title>
+
+
+</head>
+
+<body>
+
+
+<script type="text/javascript">
+document.cookie = 'user=Pierre'; //Crée ou met à jour un cookie 'user'
+alert(document.cookie); //Affiche la liste des cookies
+</script>
+
+
+
+
+
+	<form id="coffre" action="#" method="post">
+	<input type="email"  id="mail" class="form-control" placeholder="Entrer votre email" required autofocus>
+	<input type="password" id="motPasse" name="passeMot" hidden readonly>
+	<table id="tableau" width="168px" height="100px" border="1" >
+            <tr>
+            <td><div class="valeur" id="a0"></div></td>
+            <td><div class="valeur" id="a1"></div></td>
+            <td><div class="valeur" id="a2"></div></td>
+            <td><div class="valeur" id="a3"></div></td>
+            </tr>
+            <tr>
+            <td><div class="valeur" id="a4"></div></td>
+            <td><div class="valeur" id="a5"></div></td>
+            <td><div class="valeur" id="a6"></div></td>
+            <td><div class="valeur" id="a7"></div></td>
+            </tr>
+            <tr>
+            <td><div class="valeur" id="a8"></div></td>
+            <td><div class="valeur" id="a9"></div></td>
+            <td><div class="valeur" id="a10"></div></td>
+            <td><div class="valeur" id="a11"></div></td>
+            </tr>
+            <tr>
+            <td><div class="valeur" id="a12"></div></td>
+            <td><div class="valeur" id="a13"></div></td>
+            <td><div class="valeur" id="a14"></div></td>
+            <td><div class="valeur" id="a15"></div></td>
+            </tr>
+            </table>
+            <div id="masquesaisie"></div>
+			<div id="resultat"></div>
+<!--   	<input type="password" id="motPasse" name="passeMot" hidden readonly><br/> -->
+    <button type="submit" id="envoyer" title="Envoyer">Valider</button>
+    <button type="reset" id="reinitialiser" title="Reinitialiser">Effacer</button>
+    </form>
+    <script type="text/javascript" 
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery3.4.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script type="text/javascript" 
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery3.4.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    
+ 
+</body>
+
+</html>

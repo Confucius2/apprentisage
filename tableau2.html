@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<style> .valeur
+            {
+                background-color: lightblue;
+                width:35px;
+                height:20px;
+            }
+          
+          #masquesaisie 
+            { 
+				border: solid;
+             	width:70px; 
+             	height:15px;
+            } 
+         
+</style>
+<title>Insert title here</title>
+<script src="jquery3.4.1"></script>
+</head>
+
+<body>
+	<form id="coffre" action="#" method="post">
+	<input type="email"  id="mail" class="form-control" placeholder="Entrer votre email" required autofocus>
+	
+	<table id="tableau" width="168px" height="100px" border="1" >
+            <tr>
+            <td><div class="valeur" id="a0"></div></td>
+            <td><div class="valeur" id="a1"></div></td>
+            <td><div class="valeur" id="a2"></div></td>
+            <td><div class="valeur" id="a3"></div></td>
+            </tr>
+            <tr>
+            <td><div class="valeur" id="a4"></div></td>
+            <td><div class="valeur" id="a5"></div></td>
+            <td><div class="valeur" id="a6"></div></td>
+            <td><div class="valeur" id="a7"></div></td>
+            </tr>
+            <tr>
+            <td><div class="valeur" id="a8"></div></td>
+            <td><div class="valeur" id="a9"></div></td>
+            <td><div class="valeur" id="a10"></div></td>
+            <td><div class="valeur" id="a11"></div></td>
+            </tr>
+            <tr>
+            <td><div class="valeur" id="a12"></div></td>
+            <td><div class="valeur" id="a13"></div></td>
+            <td><div class="valeur" id="a14"></div></td>
+            <td><div class="valeur" id="a15"></div></td>
+            </tr>
+            </table>
+			motpasse<div id="masquesaisie"></div><br>
+<!--   	<input type="text" id="motPasse" name="passeMot"> -->
+    <button type="submit" id="envoyer" title="Envoyer">Valider</button>
+    <button type="reset" id="reinitialiser" title="Reinitialiser">Effacer</button>
+    </form>
+
+<script>
+$(document).ready(function(){
+
+// 	Obtenir un entier aléatoire dans un intervalle fermé
+	function getRandomIntInclusive(min, max) {
+		  min = Math.ceil(min);
+		  max = Math.floor(max);
+		  return Math.floor(Math.random() * (max - min +1)) + min;
+		}
+
+		var tab = Array(10);
+		var finish = false; 
+		var valeurAleatoire;
+		var emplacement;
+		var tabEmplacement = Array(10);
+		var pass = Array(6);
+// inclusion dans le tableau 10 valeur allant de 0 à 9
+		var i=0;
+		while (i<10) {valeurAleatoire=getRandomIntInclusive(0,9);
+		if (tab.includes(valeurAleatoire)) {i--;} else {tab[i]=valeurAleatoire;}
+		i++;
+		}
+		
+// chargement du tableau a clicquer pour mot de passe
+		var j=0;
+		while (j<10) {emplacement=getRandomIntInclusive(0,15);
+		if (tabEmplacement.includes(emplacement)) {j--;} else 
+		{tabEmplacement[j]=emplacement;}
+		j++;
+		}
+		
+// 		for (var i=0;i<10;i++) {$("#a"+tabEmplacement[i]).text(tab[i]);}
+		for (var i=0;i<10;i++) {$("#a"+tabEmplacement[i]).append(tab[i]);}
+	
+// acces au formulaire
+		var clics = 0;
+		var mots;
+		$( "#tableau tr td div" ).on( "click", function() {
+			if (clics<6)  
+		{
+// 		$('#masquesaisie').css('border', 'solid');	
+		$('#masquesaisie').append('*');
+		pass[clics]=$(this).text();mots=pass.join('');
+		clics++;
+
+		}
+			 else {mots=pass.join('');}
+			});
+		
+		var mail;
+
+        var motPasse;
+		
+		
+		$("#coffre").submit(function( event ) {
+			  event.preventDefault();
+			  mail = $('#mail').val();
+			  motPasse = mots;
+            alert("sousmision mot de passe =>"+motPasse+" mail =>"+mail);
+
+
+         $.post('tableau.php', {
+                'mail': mail,
+                'motPasse': motPasse
+            }, reponseConnection);
+        });
+		  
+		function reponseConnection() {
+            alert("sousmision deuxieme fois mot de passe =>"+motPasse+" mail =>"+mail);
+	        }
+		
+		$("#reinitialiser").click(function() { 
+		alert(mots);
+		var elementsupprimer = pass.splice(0,pass.length);$("#masquesaisie").empty();
+		alert(mots);
+		clics=0;
+		});
+})
+</script>		
+</body>
+
+</html>
